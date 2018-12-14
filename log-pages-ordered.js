@@ -24,3 +24,4 @@ for (let k = (pagesUnordered.length - 1), l = 0; k > l; k -= 4, l += 4) {
 }
 
 console.log(pagesOrdered);
+console.log(pagesOrdered.join(','));
