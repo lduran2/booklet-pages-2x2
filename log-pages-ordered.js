@@ -4,29 +4,6 @@ const data = {
 	last: 266
 }
 
-/*
- * [1,n] pages
- * 
- * 
- * front:
- * (n/2 + 6) (n/2 - 5)
- * (n/2 + 8) (n/2 - 7)
- * 
- * back:
- * (n/2 - 4) (n/2 + 5)
- * (n/2 - 6) (n/2 + 7)
- * 
- * 
- * front:
- * (n/2 + 2) (n/2 - 1)
- * (n/2 + 4) (n/2 - 3)
- * 
- * back:
- * (n/2)     (n/2 + 1)
- * (n/2 - 2) (n/2 + 3)
-
- */
-
 const pagesUnordered = [];
 for (let k = data.first; k <= data.last; ++k) {
 	pagesUnordered.push(k);
@@ -57,3 +34,26 @@ for (let k = 0, len = pagesOrdered.length, step = 6*4; k < len; k += step) {
 	lines.push(pagesOrdered.slice(k, k + step).join(','));
 }
 console.log(lines.join('\r\n'));
+
+/*
+ * [1,n] pages
+ * 
+ * 
+ * front:
+ * (n/2 + 6) (n/2 - 5)
+ * (n/2 + 8) (n/2 - 7)
+ * 
+ * back:
+ * (n/2 - 4) (n/2 + 5)
+ * (n/2 - 6) (n/2 + 7)
+ * 
+ * 
+ * front:
+ * (n/2 + 2) (n/2 - 1)
+ * (n/2 + 4) (n/2 - 3)
+ * 
+ * back:
+ * (n/2)     (n/2 + 1)
+ * (n/2 - 2) (n/2 + 3)
+
+ */
