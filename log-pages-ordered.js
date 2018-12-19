@@ -16,12 +16,17 @@ console.log(pagesUnordered);
 
 const pagesOrdered = [];
 
-for (let k = (pagesUnordered.length - 1), l = 0; k > l; k -= 4, l += 4) {
+for (let right = (pagesUnordered.length - 1), left = 0; right > left; right -= 4, left += 4) {
 	[0, 2, 1, 3].forEach((el, m, arr) => {
-		pagesOrdered.push(pagesUnordered[k - el]);
-		pagesOrdered.push(pagesUnordered[l + el]);
+		pagesOrdered.push(pagesUnordered[right - el]);
+		pagesOrdered.push(pagesUnordered[left + el]);
 	});
 }
 
 console.log(pagesOrdered);
-console.log(pagesOrdered.join(','));
+
+let lines = [];
+for (let k = 0, len = pagesOrdered.length, step = 6*4; k < len; k += step) {
+	lines.push(pagesOrdered.slice(k, k + step - 1).join(','));
+}
+console.log(lines.join('\r\n'));
