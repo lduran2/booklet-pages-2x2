@@ -4,6 +4,29 @@ const data = {
 	last: 266
 }
 
+/*
+ * [1,n] pages
+ * 
+ * 
+ * front:
+ * (n/2 + 6) (n/2 - 5)
+ * (n/2 + 8) (n/2 - 7)
+ * 
+ * back:
+ * (n/2 - 4) (n/2 + 5)
+ * (n/2 - 6) (n/2 + 7)
+ * 
+ * 
+ * front:
+ * (n/2 + 2) (n/2 - 1)
+ * (n/2 + 4) (n/2 - 3)
+ * 
+ * back:
+ * (n/2)     (n/2 + 1)
+ * (n/2 - 2) (n/2 + 3)
+
+ */
+
 const pagesUnordered = [];
 for (let k = data.first; k <= data.last; ++k) {
 	pagesUnordered.push(k);
@@ -16,10 +39,14 @@ console.log(pagesUnordered);
 
 const pagesOrdered = [];
 
-for (let right = (pagesUnordered.length / 2), left = (right + 1); (right > 0); right -= 4, left += 4) {
-	[-2, 0, 4, 2].forEach((el, m, arr) => {
+for (let left = (data.last >> 1), right = (left - 1); (right > 0); right -= 4, left += 4) {
+	[0, -2].forEach((el, m, arr) => {
 		pagesOrdered.push(pagesUnordered[right + el]);
 		pagesOrdered.push(pagesUnordered[left - el]);
+	});
+	[1, 3].forEach((el, m, arr) => {
+		pagesOrdered.push(pagesUnordered[left + el]);
+		pagesOrdered.push(pagesUnordered[right - el]);
 	});
 }
 
