@@ -12,15 +12,16 @@ for (let k = data.first; k <= data.last; ++k) {
 /* blank pages */
 // pagesUnordered.splice(page-num, 0, data.blank);
 
+
 console.log(pagesUnordered);
 
 const pagesOrdered = [];
 
-function increaseIfOdd(x) {
-	return (x & 1) ? (x + 1) : x;
+function evenOut(x) {
+	return (x & 1) ? (x - 1) : x;
 }
 
-for (let left = increaseIfOdd(data.last >> 1), right = (left - 1); (right > 0); right -= 4, left += 4) {
+for (let left = evenOut(data.last >> 1), right = (left - 1); (right > 0); right -= 4, left += 4) {
 	[0, -2].forEach((el, m, arr) => {
 		pagesOrdered.push(pagesUnordered[right + el]);
 		pagesOrdered.push(pagesUnordered[left - el]);
@@ -59,5 +60,4 @@ console.log(lines.join('\r\n'));
  * back:
  * (n/2)     (n/2 + 1)
  * (n/2 - 2) (n/2 + 3)
-
  */
