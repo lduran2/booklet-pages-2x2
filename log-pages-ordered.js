@@ -16,7 +16,11 @@ console.log(pagesUnordered);
 
 const pagesOrdered = [];
 
-for (let left = (data.last >> 1), right = (left - 1); (right > 0); right -= 4, left += 4) {
+function increaseIfOdd(x) {
+	return (x & 1) ? (x + 1) : x;
+}
+
+for (let left = increaseIfOdd(data.last >> 1), right = (left - 1); (right > 0); right -= 4, left += 4) {
 	[0, -2].forEach((el, m, arr) => {
 		pagesOrdered.push(pagesUnordered[right + el]);
 		pagesOrdered.push(pagesUnordered[left - el]);
